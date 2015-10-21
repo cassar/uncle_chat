@@ -179,5 +179,5 @@ DEPENDENCIES
   volt-bootstrap (~> 0.1.0)
   volt-bootstrap_jumbotron_theme (~> 0.1.0)
   volt-mailer (~> 0.1.1)
-  volt-mongo (~> 0.1.1)
+  volt-mongo (~> 0.1.4)
   volt-user_templates (~> 0.4.0)

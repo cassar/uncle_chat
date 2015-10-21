@@ -5,7 +5,7 @@ ruby '2.1.2'
 gem 'volt', '0.9.6'
 
 # volt uses mongo as the default data store.
-gem 'volt-mongo', '~> 0.1.1'
+gem 'volt-mongo', '~> 0.1.4'
 
 # The following gem's are optional for themeing
 # Twitter bootstrap
