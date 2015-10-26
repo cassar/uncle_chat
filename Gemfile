@@ -29,10 +29,6 @@ platform :ruby, :jruby do
   gem 'rbnacl-libsodium', require: false
 end
 
-group :development do
-  gem 'rubocop', '~> 0.34.2'
-end
-
 group :test do
   # Testing dependencies
   gem 'rspec', '~> 3.2.0'

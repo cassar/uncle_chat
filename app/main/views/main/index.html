@@ -1,6 +1,23 @@
 <:Title>
-  Home
+  Chat App
 
 <:Body>
-  <h1>Home</h1>
+
+ <form e-submit="return_image">
+  	<input class="form-control" placeholder="Hello, What's your name?" value= '{{ _name }}'>
+</form>
+<br>
+{{ store.friends.where(name: _name).each do |friend| }}
+	<img src="{{ friend.image }}" class="img-circle">
+	<h3>Welcome {{ friend.name}}!</h3>
+	<h4>Please enter the chat room with the 'Enter' button to the right
+	<button type="button" class="btn btn-primary pull-right">Enter</button><h4>
+<br>
+{{ end }}
+
+  
+
+
+
+
 
