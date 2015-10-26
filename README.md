@@ -1,4 +1,4 @@
-# Place your app's docs here.
+# Chat App
 
-## New to Volt?
-Be sure to read the volt docs at http://voltframework.com/docs
+## Description
+A chat application to keep in touch with my nieces.

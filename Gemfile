@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.5'
 
 gem 'volt', '0.9.6'
 
@@ -27,6 +27,10 @@ gem 'volt-mailer', '~> 0.1.1'
 platform :ruby, :jruby do
   gem 'rbnacl', require: false
   gem 'rbnacl-libsodium', require: false
+end
+
+group :development do
+  gem 'rubocop', '~> 0.34.2'
 end
 
 group :test do
