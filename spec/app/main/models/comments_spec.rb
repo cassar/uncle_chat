@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe 'sample model' do
+describe Comment do
   # Specs here
 end

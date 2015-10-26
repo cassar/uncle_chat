@@ -4,3 +4,92 @@ img {
 	width: 180px;
 	height: 200px;
 }
+
+/* chat window */
+
+#chatwindow{
+    position:relative;
+    height:400px; /* if you wish to use all of your space, use
+    position:absolute; top:0;left:0;right:0;bottom:0;
+    or drop the chatdwindow div */
+}
+#messagewindow, #inputcontainer{
+    position:absolute;
+    left:0;
+    right:0;
+    border:1px solid #000;
+}
+#messagewindow{   
+    overflow:auto;
+    top:0;
+    bottom:3em;
+}
+#inputcontainer{
+    display:block;
+    bottom:0;
+    height:1em;
+    padding:.5em;
+    margin-top:1em;
+}
+
+#inputcontainer > p{
+    margin:0;
+}
+
+/* font families */
+
+.family-serif {
+    font-family: Times, "Times New Roman", Georgia, serif;
+}
+
+.family-sansserif {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.family-monospace {
+    font-family: "Lucida Console", Courier, monospace;
+}
+
+.family-cursive {
+    font-family: cursive;
+}
+
+.family-fantasy {
+    font-family: fantasy;
+}
+
+/* font colors */
+
+.colour-blue {
+	color: Blue;
+}
+
+.colour-black {
+	color: Black;
+}
+
+.colour-red {
+	color: Red;
+}
+
+.colour-purple {
+	color: Purple;
+}
+
+/* font size */
+
+.size-large {
+	font-size: xx-large;
+}
+
+.size-medium {
+	font-size: medium;
+}
+
+.size-small {
+	font-size: xx-small;
+}
+
+
+
+

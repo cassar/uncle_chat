@@ -39,6 +39,10 @@ group :test do
   gem 'poltergeist', '~> 1.6.0'
 end
 
+group :development do
+  gem 'rubocop', '~> 0.34.2' 
+end
+
 # Server for MRI
 platform :mri, :mingw, :x64_mingw do
   # The implementation of ReadWriteLock in Volt uses concurrent ruby and ext helps performance.

@@ -1,6 +1,7 @@
 # See https://github.com/voltrb/volt#routes for more info on routes
 
-client '/about', component: 'test', controller: 'main', action: 'index'
+client '/about', controller: 'main', action: 'about'
+client '/chat', controller: 'chats', action: 'index'
 
 # Routes for login and signup, provided by user_templates component gem
 client '/signup', component: 'user_templates', controller: 'signup'
