@@ -1,8 +1,13 @@
 // Place your apps css here
 
-img {
+.front {
 	width: 180px;
 	height: 200px;
+}
+
+.chat {
+    width: 65px;
+    height: 65px;
 }
 
 /* chat window */
@@ -17,7 +22,6 @@ img {
     position:absolute;
     left:0;
     right:0;
-    border:1px solid #000;
 }
 #messagewindow{   
     overflow:auto;

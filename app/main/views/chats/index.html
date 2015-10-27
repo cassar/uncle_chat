@@ -2,19 +2,43 @@
   Chat App
 
 <:Body>
-  
+
 <div id="chatwindow">
 	<div id="messagewindow">
 		{{ store.comments.all.each do |comment| }}
-		<div class="well" >
-			<h3 class="family-{{ comment.family }} colour-{{ comment.colour }} size-{{ comment.size }}">{{ comment.entry }}</h3>
-		</div>
+			{{ if comment.author == params._name }}
+				<div class="panel-body">
+					<div class="media pull-right">
+						<div class="media-body family-{{ comment.family }} colour-{{ comment.colour }} size-{{ comment.size }}">
+							{{ comment.entry }}
+						</div>
+						<div class="media-right">
+							{{ store.friends.where(name: comment.author).each do |friend| }}
+							<img class="media-object chat" src="{{ friend.image }}" alt="...">
+							{{ end }}
+						</div>
+					</div>
+				</div>
+				{{ else }}
+				<div class="panel-body">
+					<div class="media">
+						<div class="media-left">
+							{{ store.friends.where(name: comment.author).each do |friend| }}
+							<img class="media-object chat" src="{{ friend.image }}" alt="...">
+							{{ end }}
+						</div>
+						<div class="media-body family-{{ comment.family }} colour-{{ comment.colour }} size-{{ comment.size }}">
+							{{ comment.entry }}
+						</div>
+					</div>
+				</div>
+			{{ end }}
 		{{ end }}
 	</div>
 </div>
 
 <div class="well">
-		<h3 class="family-{{ _family }} colour-{{ _colour }} size-{{ _size }}">{{ new_comment_entry }}</h3>
+	<p class="family-{{ _family }} colour-{{ _colour }} size-{{ _size }}">{{ new_comment_entry }}</p>
 </div>
 
 <br>
@@ -49,8 +73,8 @@
 	  <option value="red">Red</option>
 	  <option value="purple">Purple</option>
 	</select>
-
+	
 	<button type="button" class="btn btn-primary pull-right" e-click="submit_comment">
-		Submit
+			Submit
 	</button>
 </h4>

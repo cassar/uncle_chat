@@ -3,4 +3,5 @@ class Comment < Volt::Model
   field :colour
   field :size
   field :family
+  field :author
 end

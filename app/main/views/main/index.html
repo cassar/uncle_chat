@@ -8,12 +8,20 @@
 </form>
 <br>
 {{ store.friends.where(name: _name).each do |friend| }}
-	<img src="{{ friend.image }}" class="img-circle">
-	<h3>Welcome {{ friend.name}}!</h3>
-	<h4>Please enter the chat room with the 'Enter' button to the right
-	<a href="/chat"><button type="button" class="btn btn-primary pull-right">Enter</button><h4></a>
-<br>
+<div class="media">
+  <div class="media-left">
+    <a href="/{{ friend.name }}">
+      <img class="media-object img-circle front" src="{{ friend.image }}" alt="Your Face :)">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">Hello {{ friend.name }}!</h4>
+    Please enter the chat room by clicking on your picture.
+  </div>
+</div>
 {{ end }}
+<br>
+
 
   
 

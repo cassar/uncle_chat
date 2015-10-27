@@ -8,14 +8,14 @@ module Main
     end
 
     def submit_comment
-      if new_comment_entry.present?
-        store.comments.create(
-          entry: new_comment_entry,
-          colour: _colour,
-          size: _size,
-          family: _family)
-        index
-      end
+      return unless new_comment_entry.present?
+      store.comments.create(
+        entry: new_comment_entry,
+        colour: _colour,
+        size: _size,
+        family: _family,
+        author: params._name)
+      index
     end
   end
 end

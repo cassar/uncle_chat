@@ -22,4 +22,13 @@ describe Main::ChatsController do
 
     expect(store.comments.count.sync).to eq(1)
   end
+
+  it 'should not make new comment object' do
+    @chats_controller.new_comment_entry = ''
+    expect(@chats_controller.new_comment_entry).to eq('')
+
+    @chats_controller.submit_comment
+
+    expect(store.comments.count.sync).to eq(0)
+  end
 end
