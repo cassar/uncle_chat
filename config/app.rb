@@ -46,7 +46,7 @@ Volt.configure do |config|
     config.db_uri = ENV['MONGOLAB_URI'] # you will have to set this on heroku
   else
     config.db_host = 'localhost'
-    config.db_port = 27017
+    config.db_port = 27_017
   end
   #####################
   # Compression options
@@ -116,9 +116,9 @@ Volt.configure do |config|
   #
   # Encrypt message bus - messages on the message bus are encrypted by default
   # using rbnacl.
-  
+
   # config.message_bus.disable_encryption = true
-  
+
   #
   # ## MessageBus Server -- the message bus binds to a port and ip which the
   # other volt instances need to be able to connect to.  You can customize
