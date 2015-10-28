@@ -7,7 +7,7 @@
 	<div id="messagewindow">
 		{{ store.comments.all.each do |comment| }}
 			{{ if comment.author == params._name }}
-				<div class="panel-body">
+				<div class="panel-body" style="background-color:{{ comment.background }}">
 					<div class="media pull-right">
 						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
 							{{ comment.entry }}
@@ -20,7 +20,7 @@
 					</div>
 				</div>
 				{{ else }}
-				<div class="panel-body">
+				<div class="panel-body" style="background-color:{{ comment.background }}">
 					<div class="media">
 						<div class="media-left">
 							{{ store.friends.where(name: comment.author).each do |friend| }}
@@ -37,8 +37,8 @@
 	</div>
 </div>
 
-<div class="well">
-	<p class="family-{{ _family }} colour-{{ _colour }} size-{{ _size }}">{{ new_comment_entry }}</p>
+<div class="well" style="background-color:{{ _background }}">
+	<p style="font-family:{{ _family }};color:{{ _colour }};font-size:{{ _size }};background-color:{{ _background }}">{{ new_comment_entry }}</p>
 </div>
 
 <br>
@@ -68,6 +68,14 @@
 
 	Font Colour:
 	<select value="{{ _colour }}">
+	  <option value="blue">Blue</option>
+	  <option value="black">Black</option>
+	  <option value="red">Red</option>
+	  <option value="purple">Purple</option>
+	</select>
+
+	Background Colour:
+	<select value="{{ _background }}">
 	  <option value="blue">Blue</option>
 	  <option value="black">Black</option>
 	  <option value="red">Red</option>

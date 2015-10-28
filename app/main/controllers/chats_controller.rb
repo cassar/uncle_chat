@@ -14,6 +14,7 @@ module Main
         colour: _colour,
         size: _size,
         family: _family,
+        background: _background,
         author: params._name)
       index
     end
