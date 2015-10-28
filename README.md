@@ -9,10 +9,11 @@ A chat application to keep in touch with my nieces.
 
 - Have a params code to get to chat 'entrance'.
 - Localise a group of friends to a user.
+- Make the chat window start from the bottom and update to the bottom.
+- Notifications
 
 ### Minor
 
-- Make the chat window start from the bottom and update to the bottom.
 - Add persistence to friend comment styling.
 - Options at the top need to be hidden if no one is logged in.
 - Make name entry case insensitive.
@@ -34,3 +35,7 @@ A chat application to keep in touch with my nieces.
 ## Issues
 
 - I can't put code in a tag, call a method in the controller and expect it to work.
+
+### Minor Issues
+
+- Glyphicons don't work.
