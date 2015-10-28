@@ -12,7 +12,6 @@ A chat application to keep in touch with my nieces.
 
 ### Minor
 
-- Switch to inline styling of comments.
 - Add background colour for comments.
 - Make the chat window start from the bottom and update to the bottom.
 - Add persistence to friend comment styling.
@@ -25,6 +24,8 @@ A chat application to keep in touch with my nieces.
 - When a user signs up for the first time...
 	- Have them redirected to the dash.
 	- Have their first friend auto generated as themselves.
+- Make the style attributes appear what they are in the list.
+- Friends group needs a unique validation per user.
 
 ### Very Minor
 
