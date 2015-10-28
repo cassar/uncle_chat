@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.5'
+ruby '2.1.7'
 
 gem 'volt', '0.9.6'
 
@@ -19,6 +19,9 @@ gem 'volt-user_templates', '~> 0.4.0'
 
 # Add ability to send e-mail from apps.
 gem 'volt-mailer', '~> 0.1.1'
+
+# Provides a component that displays text, but becomes editable in a field when clicked on.
+gem 'volt-fields'
 
 # Use rbnacl for message bus encrpytion
 # (optional, if you don't need encryption, disable in app.rb and remove)
@@ -44,7 +47,7 @@ group :development do
   gem 'guard'
   gem 'guard-rspec'
   gem 'guard-rubocop'
-  gem 'guard-bundler'
+  gem 'guard-bundler', require: false
 end
 
 # Server for MRI

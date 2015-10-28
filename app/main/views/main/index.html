@@ -2,30 +2,18 @@
   Chat App
 
 <:Body>
-
- <form e-submit="return_image">
-  	<input class="form-control" placeholder="Hello, What's your name?" value= '{{ _name }}'>
-</form>
-<br>
-{{ store.friends.where(name: _name).each do |friend| }}
-<div class="media">
-  <div class="media-left">
-    <a href="/{{ friend.name }}">
-      <img class="media-object img-circle front" src="{{ friend.image }}" alt="Your Face :)">
-    </a>
+{{ if Volt.current_user? }}
+  <div class="jumbotron">
+    <h2>Hello, welcome to the Chat App!</h2>
+    <p>Proceed to your dashboard or your chatroom below...</p>
+    <p><a class="btn btn-primary" href="/dashboard" role="button">Dashboard</a>
+    <a class="btn btn-primary" href="/entry" role="button">Chat Room</a></p>
   </div>
-  <div class="media-body">
-    <h4 class="media-heading">Hello {{ friend.name }}!</h4>
-    Please enter the chat room by clicking on your picture.
+{{ else }}
+  <div class="jumbotron">
+    <h2>Hello, welcome to the Chat App!</h2>
+    <p>Please sign up or sign in below.</p>
+    <p><a class="btn btn-primary" href="/signup" role="button">Sign Up</a>
+    <a class="btn btn-primary" href="/login" role="button">Sign In</a></p>
   </div>
-</div>
 {{ end }}
-<br>
-
-
-  
-
-
-
-
-

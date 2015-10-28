@@ -1,0 +1,23 @@
+<:Title>
+  Dashboard | Chat App
+
+<:Body>
+	<h2>Dash Board</h2>
+	
+	<:fields:text value="{{ user.chat_url }}" />
+	
+	<h3>Friends<button type="button" class="btn btn-primary pull-right" e-click="new_friend">New Friend</button></h3>
+	<br>
+	{{ store.friends.reverse.each do |friend| }}
+	<div class="media">
+	  <div class="media-left">
+	    <a href="/{{ friend.name }}">
+	      <img class="media-object img-circle chat" src="{{ friend.image }}" alt="A Face :)">
+	    </a>
+	  </div>
+	  <div class="media-body">
+	    <:fields:text value="{{ friend.name }}" />
+	    <:fields:textarea value="{{ friend.image }}" />
+	  </div>
+	</div>
+	{{ end }}
