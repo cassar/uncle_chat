@@ -1,6 +1,7 @@
 module Main
   class ChatsController < Volt::ModelController
     model :store
+    model :page
     reactive_accessor :new_comment_entry
 
     def index
@@ -9,13 +10,7 @@ module Main
 
     def submit_comment
       return unless new_comment_entry.present?
-      store.comments.create(
-        entry: new_comment_entry,
-        colour: _colour,
-        size: _size,
-        family: _family,
-        background: _background,
-        author: params._name)
+      NewObjectTask.new_comment(new_comment_entry, friend_id)
       index
     end
   end

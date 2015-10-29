@@ -5,7 +5,7 @@
 
 <div id="chatwindow">
 	<div id="messagewindow">
-		{{ store.comments.all.each do |comment| }}
+		{{ store.comments.all.reverse.each do |comment| }}
 			{{ if comment.author == params._name }}
 				<div class="panel-body" style="background-color:{{ comment.background }}">
 					<div class="media pull-right">
@@ -36,12 +36,12 @@
 		{{ end }}
 	</div>
 </div>
-
-<div class="well" style="background-color:{{ _background }}">
-	<p style="font-family:{{ _family }};color:{{ _colour }};font-size:{{ _size }};background-color:{{ _background }}">{{ new_comment_entry }}</p>
+{{ store.friends.where(name: params._name).all.each do |friend| }}
+	{{ friend.styles.each do |style| }}
+<div class="well" style="background-color:{{ style.background }}">
+	<p style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">{{ new_comment_entry }}</p>
 </div>
 
-<br>
 
 <form e-submit="submit_comment">
   	<input class="form-control" placeholder="Chat Here" autofocus value="{{ new_comment_entry }}">
@@ -49,40 +49,64 @@
 
 <br>
 
-<h4>
-	Font Family:
-	<select value="{{ _family }}">
-	  <option value="serif">Serif</option>
-	  <option value="sansserif">Sans Serif</option>
-	  <option value="monospace">Monospace</option>
-	  <option value="cursive">Cursive</option>
-	  <option value="fantasy">Fantasy</option>
-	</select>
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#colour" aria-controls="colour" role="tab" data-toggle="tab">Colour</a></li>
+    <li role="presentation"><a href="#background" aria-controls="background" role="tab" data-toggle="tab">Background</a></li>
+    <li role="presentation"><a href="#size" aria-controls="size" role="tab" data-toggle="tab">Size</a></li>
+    <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab">Family</a></li>
+	<button type="button" class="btn btn-primary pull-right" e-click="submit_comment">Submit</button>
+  </ul>
 
-	Font Size:
-	<select value="{{ _size }}">
-	  <option value="large">Large</option>
-	  <option value="medium">Medium</option>
-	  <option value="small">Small</option>
-	</select>
-
-	Font Colour:
-	<select value="{{ _colour }}">
-	  <option value="blue">Blue</option>
-	  <option value="black">Black</option>
-	  <option value="red">Red</option>
-	  <option value="purple">Purple</option>
-	</select>
-
-	Background Colour:
-	<select value="{{ _background }}">
-	  <option value="blue">Blue</option>
-	  <option value="black">Black</option>
-	  <option value="red">Red</option>
-	  <option value="purple">Purple</option>
-	</select>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="colour">
+    	<:fields:radio:inline
+    	value="{{ style.colour }}" 
+    	options="{{[
+    	{label:'Blue', value:'blue'},
+    	{label:'Black', value:'black'},
+    	{label:'Red', value:'red'}, 
+    	{label:'Purple', value:'purple'}
+    	]}}"/>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="background">
+    	<:fields:radio:inline
+    	value="{{ style.background }}" 
+    	options="{{[
+    	{label:'Blue', value:'blue'},
+    	{label:'Black', value:'black'},
+    	{label:'Red', value:'red'}, 
+    	{label:'Purple', value:'purple'}
+    	]}}"/>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="size">
+    	<:fields:radio:inline
+    	value="{{ style.size }}" 
+    	options="{{[
+    	{label:'Large', value:'large'},
+    	{label:'Medium', value:'medium'},
+    	{label:'Small', value:'small'}
+    	]}}"/>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="family">
+    	<:fields:radio:inline
+    	value="{{ style.family }}" 
+    	options="{{[
+    	{label:'Serif', value:'serif'},
+    	{label:'Sans Serif', value:'sansserif'},
+    	{label:'Monospace', value:'monospace'},
+    	{label:'Cursive', value:'cursive'},
+    	{label:'Fantasy', value:'fantasy'}
+    	]}}"/>
+    </div>
+  </div>
+</div>
+	{{ end }}
+{{ end }}
+<br>
 	
-	<button type="button" class="btn btn-primary pull-right" e-click="submit_comment">
-			Submit
-	</button>
-</h4>
+	
+
+

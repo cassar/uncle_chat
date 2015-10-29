@@ -4,5 +4,5 @@ class Comment < Volt::Model
   field :size
   field :family
   field :background
-  field :author
+  belongs_to :friend
 end

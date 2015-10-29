@@ -6,8 +6,9 @@ describe Main::DashboardsController do
   end
 
   it 'should create a new friend' do
-    @friend = @dashboards_controller.new_friend
+    @dashboards_controller.new_friend
 
     expect(store.friends.count.sync).to eq(1)
+    expect(store.styles.count.sync).to eq(1)
   end
 end
