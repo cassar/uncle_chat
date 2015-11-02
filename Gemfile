@@ -48,6 +48,7 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-rubocop'
   gem 'guard-bundler', require: false
+  gem 'volt-browser_irb'
 end
 
 # Server for MRI

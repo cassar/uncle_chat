@@ -11,3 +11,7 @@ component 'bootstrap_jumbotron_theme'
 component 'user_templates'
 
 component 'fields'
+
+if Volt.env.development?
+  component 'browser_irb'
+end
