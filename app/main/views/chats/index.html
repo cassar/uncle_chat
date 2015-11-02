@@ -37,7 +37,7 @@
 	</div>
 </div>
 {{ store.friends.where(name: params._name).all.each do |friend| }}
-	{{ friend.styles.each do |style| }}
+	{{ friend.style.each do |style| }}
 <div class="well" style="background-color:{{ style.background }}">
 	<p style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">{{ new_comment_entry }}</p>
 </div>

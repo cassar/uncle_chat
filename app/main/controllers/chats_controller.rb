@@ -1,7 +1,6 @@
 module Main
   class ChatsController < Volt::ModelController
     model :store
-    model :page
     reactive_accessor :new_comment_entry
 
     def index
