@@ -9,7 +9,7 @@ module Main
 
     def submit_comment
       return unless new_comment_entry.present?
-      NewObjectTask.new_comment(new_comment_entry, params._friend)
+      NewObjectTask.new_comment(new_comment_entry)
       index
     end
   end

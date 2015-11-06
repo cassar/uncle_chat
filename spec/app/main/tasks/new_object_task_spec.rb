@@ -17,7 +17,7 @@ describe NewObjectTask, type: :task do
   it 'should test the new_comment method with an entry' do
     @entry = 'How do you do?'
     @friend = store.friends.where(name: 'James').first.sync
-    @comment = NewObjectTask.new_comment(@entry, @friend.id).sync
+    @comment = NewObjectTask.new_comment(@entry, @friend.name).sync
 
     expect(store.comments.count.sync).to eq(1)
     expect(@comment.entry).to eq(@entry)

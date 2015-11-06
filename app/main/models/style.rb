@@ -3,5 +3,5 @@ class Style < Volt::Model
   field :background, String
   field :family, String
   field :size, String
-  # belongs_to :friend
+  belongs_to :friend
 end
