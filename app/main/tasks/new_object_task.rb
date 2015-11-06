@@ -4,12 +4,14 @@ class NewObjectTask < Volt::Task
       name: 'New Friend Name',
       image: 'New Friend Image URL').sync
     @friend.styles.create.sync
+    nil
   end
 
   def new_comment(entry, friend_name)
     @friend = store.friends.where(name: friend_name).first.sync
     @style = @friend.styles.first.sync
     create_comment(entry, @style, @friend).sync
+    nil
   end
 
   def create_comment(entry, style, friend)

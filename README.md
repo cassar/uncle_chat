@@ -21,6 +21,7 @@ A chat application to keep in touch with my nieces.
 
 - Add persistence to friend comment styling.
 - Test the models. Make they'll do what I think they'll do.
+- Improve error reporting for tasks (currently just returns nil).
 - Options at the top need to be hidden if no one is logged in.
 - Make name entry case insensitive.
 - Add dashboard to user dropdown.
