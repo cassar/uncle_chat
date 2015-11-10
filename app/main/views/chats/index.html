@@ -41,7 +41,8 @@
         <div class="well" style="background-color:{{ style.background }}">
         	<p style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">{{ new_comment_entry }}</p>
         </div>
-
+    {{ end }}
+{{ end }}
         <form e-submit="submit_comment">
           	<input class="form-control" placeholder="Chat Here" autofocus value="{{ new_comment_entry }}">
         </form>
@@ -57,7 +58,8 @@
             <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab">Family</a></li>
         	<button type="button" class="btn btn-primary pull-right" e-click="submit_comment">Submit</button>
           </ul>
-
+{{ store.friends.where(name: params._name).all.each do |friend| }}
+    {{ friend.styles.each do |style| }}
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="colour">
