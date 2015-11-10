@@ -39,3 +39,13 @@
 #inputcontainer > p{
     margin:0;
 }
+
+/* destroy button */
+
+.list-group li .destroy {
+  display: none;
+}
+
+.list-group li:hover .destroy {
+  display: block;
+}

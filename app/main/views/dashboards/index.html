@@ -8,16 +8,21 @@
 	
 	<h3>Friends<button type="button" class="btn btn-primary pull-right" e-click="new_friend">New Friend</button></h3>
 	<br>
+	<ul class="list-group">
 	{{ store.friends.reverse.each do |friend| }}
-	<div class="media">
-	  <div class="media-left">
-	    <a href="/{{ friend.name }}">
-	      <img class="media-object img-circle chat" src="{{ friend.image }}" alt="A Face :)">
-	    </a>
-	  </div>
-	  <div class="media-body">
-	    <:fields:text value="{{ friend.name }}" />
-	    <:fields:textarea value="{{ friend.image }}" />
-	  </div>
-	</div>
+	<li class="list-group-item">
+		<div class="media panel">
+		  <button type="button" class="btn btn-danger pull-right destroy" e-click="friend.destroy">Delete</button>
+		  <div class="media-left">
+		    <a href="/{{ friend.name }}">
+		      <img class="media-object img-circle chat" src="{{ friend.image }}" alt="A Face :)">
+		    </a>
+		  </div>
+		  <div class="media-body">
+		    <:fields:text value="{{ friend.name }}" />
+		    <:fields:textarea value="{{ friend.image }}" />
+		  </div>
+		</div>
+		</li>
 	{{ end }}
+	</ul>
