@@ -23,6 +23,7 @@ describe NewObjectTask, type: :task do
     expect(store.comments.count.sync).to eq(1)
     expect(@comment.entry).to eq(@entry)
     expect(@comment.colour).to eq(@style.colour)
+    expect(@comment.sent_at.present?).to eq(true)
   end
 
   it 'should test the create_comment method with an entry and a style' do
@@ -34,5 +35,6 @@ describe NewObjectTask, type: :task do
     expect(store.comments.count.sync).to eq(1)
     expect(@comment.entry).to eq(@entry)
     expect(@comment.colour).to eq(@style.colour)
+    expect(@comment.sent_at.present?).to eq(true)
   end
 end

@@ -12,7 +12,8 @@ describe Comment do
       colour: 'blue',
       size: 'medium',
       family: 'sansserify',
-      background: 'red').sync
+      background: 'red',
+      sent_at: Time.now).sync
 
     expect(store.comments.count.sync).to eq(1)
   end

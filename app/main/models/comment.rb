@@ -5,4 +5,5 @@ class Comment < Volt::Model
   field :family
   field :background
   field :author
+  field :sent_at
 end

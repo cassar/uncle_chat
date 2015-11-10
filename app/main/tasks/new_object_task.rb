@@ -21,6 +21,7 @@ class NewObjectTask < Volt::Task
       size: style.size,
       family: style.family,
       background: style.background,
-      author: friend.name)
+      author: friend.name,
+      sent_at: Time.now)
   end
 end
