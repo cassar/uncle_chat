@@ -10,7 +10,7 @@
 				<div class="panel-body" style="background-color:{{ comment.background }}">
 					<div class="media pull-right">
 						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
-							{{ comment.entry }} {{ comment.sent_at }}
+							{{ comment.entry }} 
 						</div>
 						<div class="media-right">
 							{{ store.friends.where(name: comment.author).each do |friend| }}
@@ -18,19 +18,22 @@
 							{{ end }}
 						</div>
 					</div>
+                    <span class="label label-info">{{ comment.sent_at }}</span>
 				</div>
 			{{ else }}
 				<div class="panel-body" style="background-color:{{ comment.background }}">
 					<div class="media">
+                        <span class="label label-info pull-right">{{ comment.sent_at }}</span>
 						<div class="media-left">
 							{{ store.friends.where(name: comment.author).each do |friend| }}
 							<img class="media-object chat" src="{{ friend.image }}" alt="...">
 							{{ end }}
 						</div>
 						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
-							{{ comment.sent_at }} {{ comment.entry }}
+							{{ comment.entry }}
 						</div>
 					</div>
+
 				</div>
 			{{ end }}
 		{{ end }}
