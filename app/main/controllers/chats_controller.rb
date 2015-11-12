@@ -7,7 +7,10 @@ module Main
 
     def submit_comment
       NewObjectTask.new_comment(params._name)
-      index
+    end
+
+    def friend_present?
+      friends.where(name: page._name).first.then(&:present?)
     end
   end
 end
