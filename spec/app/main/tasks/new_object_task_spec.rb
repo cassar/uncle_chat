@@ -15,9 +15,10 @@ describe NewObjectTask, type: :task do
   end
 
   it 'should test the new_comment method with an entry' do
-    @entry = 'How do you do?'
     @friend = store.friends.where(name: 'James').first.sync
-    NewObjectTask.new_comment(@entry, @friend.name).sync
+    @entry = 'Have a nice day.'
+    @friend.entry = @entry
+    NewObjectTask.new_comment(@friend.name).sync
     @comment = store.comments.first.sync
 
     expect(store.comments.count.sync).to eq(1)
@@ -26,11 +27,22 @@ describe NewObjectTask, type: :task do
     expect(@comment.sent_at.present?).to eq(true)
   end
 
-  it 'should test the create_comment method with an entry and a style' do
-    @entry = 'How do you do?'
+  it 'should test the new_comment method with empty entry' do
     @friend = store.friends.where(name: 'James').first.sync
+    @entry = ''
+    @friend.entry = @entry
+    NewObjectTask.new_comment(@friend.name).sync
+    @comment = store.comments.first.sync
+
+    expect(store.comments.count.sync).to eq(0)
+  end
+
+  it 'should test the create_comment method with an entry and a style' do
+    @friend = store.friends.where(name: 'James').first.sync
+    @entry = 'Have a nice day.'
+    @friend.entry = @entry
     @style = store.styles.first.sync
-    @comment = NewObjectTask.create_comment(@entry, @style, @friend).sync
+    @comment = NewObjectTask.create_comment(@style, @friend).sync
 
     expect(store.comments.count.sync).to eq(1)
     expect(@comment.entry).to eq(@entry)

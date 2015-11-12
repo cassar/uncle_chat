@@ -7,16 +7,18 @@ class NewObjectTask < Volt::Task
     nil
   end
 
-  def new_comment(entry, friend_name)
+  def new_comment(friend_name)
     @friend = store.friends.where(name: friend_name).first.sync
+    return unless @friend.entry.present?
     @style = @friend.styles.first.sync
-    create_comment(entry, @style, @friend).sync
+    create_comment(@style, @friend).sync
+    @friend.entry = ''
     nil
   end
 
-  def create_comment(entry, style, friend)
+  def create_comment(style, friend)
     store.comments.create(
-      entry: entry,
+      entry: friend.entry,
       colour: style.colour,
       size: style.size,
       family: style.family,

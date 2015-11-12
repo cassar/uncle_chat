@@ -42,12 +42,14 @@
 {{ store.friends.where(name: params._name).all.each do |friend| }}
 	{{ friend.styles.each do |style| }}
         <div class="well" style="background-color:{{ style.background }}">
-        	<p style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">{{ new_comment_entry }}</p>
+        	<p style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">{{ friend.entry }}</p>
         </div>
     {{ end }}
 {{ end }}
         <form e-submit="submit_comment">
-          	<input class="form-control" placeholder="Chat Here" autofocus value="{{ new_comment_entry }}">
+        {{ store.friends.where(name: params._name).each do |friend| }}
+          	<input class="form-control" placeholder="Chat Here" autofocus value="{{ friend.entry }}">
+        {{ end }}
         </form>
 
         <br>
