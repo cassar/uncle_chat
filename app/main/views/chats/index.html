@@ -9,7 +9,7 @@
 			{{ if comment.author == params._name }}
 				<div class="panel-body" style="background-color:{{ comment.background }}">
 					<div class="media pull-right">
-						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
+						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.background }};font-size:{{ comment.size }}">
 							{{ comment.entry }} 
 						</div>
 						<div class="media-right">
@@ -68,47 +68,37 @@
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="colour">
-            	<:fields:radio:inline
-            	value="{{ style.colour }}" 
-            	options="{{[
-            	{label:'Blue', value:'blue'},
-            	{label:'Black', value:'black'},
-            	{label:'Red', value:'red'}, 
-            	{label:'Purple', value:'purple'}
-            	]}}"/>
+                <br>
+            	<input type="radio" checked="{{ style.colour }}" value="blue" />Blue   
+                <input type="radio" checked="{{ style.colour }}" value="black" />Black   
+                <input type="radio" checked="{{ style.colour }}" value="red" />Red
+                <input type="radio" checked="{{ style.colour }}" value="purple" />Purple
             </div>
             <div role="tabpanel" class="tab-pane" id="background">
-            	<:fields:radio:inline
-            	value="{{ style.background }}" 
-            	options="{{[
-            	{label:'Blue', value:'blue'},
-            	{label:'Black', value:'black'},
-            	{label:'Red', value:'red'}, 
-            	{label:'Purple', value:'purple'}
-            	]}}"/>
+                <br>
+            	<input type="radio" checked="{{ style.background }}" value="blue" />Blue
+                <input type="radio" checked="{{ style.background }}" value="black" />Black
+                <input type="radio" checked="{{ style.background }}" value="red" />Red
+                <input type="radio" checked="{{ style.background }}" value="purple" />Purple
             </div>
             <div role="tabpanel" class="tab-pane" id="size">
-            	<:fields:radio:inline
-            	value="{{ style.size }}" 
-            	options="{{[
-            	{label:'Large', value:'large'},
-            	{label:'Medium', value:'medium'},
-            	{label:'Small', value:'small'}
-            	]}}"/>
+                <br>
+            	<input type="radio" checked="{{ style.size }}" value="large" />Large
+                <input type="radio" checked="{{ style.size }}" value="medium" />Medium
+                <input type="radio" checked="{{ style.size }}" value="small" />Small
             </div>
             <div role="tabpanel" class="tab-pane" id="family">
-            	<:fields:radio:inline
-            	value="{{ style.family }}" 
-            	options="{{[
-            	{label:'Serif', value:'serif'},
-            	{label:'Sans Serif', value:'sansserif'},
-            	{label:'Monospace', value:'monospace'},
-            	{label:'Cursive', value:'cursive'},
-            	{label:'Fantasy', value:'fantasy'}
-            	]}}"/>
+                <br>
+                <input type="radio" checked="{{ style.family }}" value="serif" />Serif
+                <input type="radio" checked="{{ style.family }}" value="sansserif" />Sans Serif
+                <input type="radio" checked="{{ style.family }}" value="monospace" />Monospace
+                <input type="radio" checked="{{ style.family }}" value="cursive" />Cursive
+                <input type="radio" checked="{{ style.family }}" value="fantasy" />Fantasy
             </div>
           </div>
         </div>
+        
 	{{ end }}
 {{ end }}
 <br>
+
