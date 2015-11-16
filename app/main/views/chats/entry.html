@@ -5,12 +5,12 @@ Chat Entry | Chat App
 <:Body>
 
  <form e-submit="return_image">
-  	<input class="form-control" placeholder="Hello, What's your name?" value= '{{ page._name }}'>
+  	<input class="form-control" placeholder="Hello, What's your name?" value= '{{ _name }}'>
 </form>
 <br>
 <div class="jumbotron">
   {{ if friend_present? }}
-    {{ store.friends.where(name: page._name).each do |friend| }}
+    {{ store.friends.where(name: _name).each do |friend| }}
       <div class="media">
         <div class="media-left">
           <a href="/{{ friend.name }}">
@@ -26,7 +26,7 @@ Chat Entry | Chat App
 {{ else }}
   <div class="media">
     <div class="media-left">
-      <a href="#{}">
+      <a href="#">
         <img class="media-object img-circle front" src="http://sites.utexas.edu/bonnecazegroup/files/2013/02/blank-profile-hi.png" alt="Your Face :)">
       </a>
     </div>
