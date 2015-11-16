@@ -5,12 +5,12 @@
 
 <div id="chatwindow">
 	<div id="messagewindow">
-		{{ store.comments.all.reverse.each do |comment| }}
+		{{ store.comments.all.each do |comment| }}
 			{{ if comment.author == params._name }}
 				<div class="panel-body" style="background-color:{{ comment.background }}">
 					<div class="media pull-right">
-						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.background }};font-size:{{ comment.size }}">
-							{{ comment.entry }} 
+						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
+							{{ comment.entry }}
 						</div>
 						<div class="media-right">
 							{{ store.friends.where(name: comment.author).each do |friend| }}
@@ -69,36 +69,36 @@
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="colour">
                 <br>
-            	<input type="radio" checked="{{ style.colour }}" value="blue" />Blue   
-                <input type="radio" checked="{{ style.colour }}" value="black" />Black   
-                <input type="radio" checked="{{ style.colour }}" value="red" />Red
-                <input type="radio" checked="{{ style.colour }}" value="purple" />Purple
+            	<input type="radio" checked="{{ style.colour }}" value="blue" /><span style="color: blue">Blue</span>
+                <input type="radio" checked="{{ style.colour }}" value="black" /><span style="color: black">Black</span>
+                <input type="radio" checked="{{ style.colour }}" value="red" /><span style="color: red">Red</span>
+                <input type="radio" checked="{{ style.colour }}" value="purple" /><span style="color: purple">Purple</span>
             </div>
             <div role="tabpanel" class="tab-pane" id="background">
                 <br>
-            	<input type="radio" checked="{{ style.background }}" value="blue" />Blue
-                <input type="radio" checked="{{ style.background }}" value="black" />Black
-                <input type="radio" checked="{{ style.background }}" value="red" />Red
-                <input type="radio" checked="{{ style.background }}" value="purple" />Purple
+            	<input type="radio" checked="{{ style.background }}" value="blue" /><span style="color: blue">Blue</span>
+                <input type="radio" checked="{{ style.background }}" value="black" /><span style="color: black">Black</span>
+                <input type="radio" checked="{{ style.background }}" value="red" /><span style="color: red">Red</span>
+                <input type="radio" checked="{{ style.background }}" value="purple" /><span style="color: purple">Purple</span>
+                <input type="radio" checked="{{ style.background }}" value="" /><span style="color: black">[none]</span>
             </div>
             <div role="tabpanel" class="tab-pane" id="size">
                 <br>
-            	<input type="radio" checked="{{ style.size }}" value="large" />Large
-                <input type="radio" checked="{{ style.size }}" value="medium" />Medium
-                <input type="radio" checked="{{ style.size }}" value="small" />Small
+            	<input type="radio" checked="{{ style.size }}" value="large" /><span style="font-size: large">Large</span>
+                <input type="radio" checked="{{ style.size }}" value="medium" /><span style="font-size: medium">Medium</span>
+                <input type="radio" checked="{{ style.size }}" value="small" /><span style="font-size: small">Small</span>
             </div>
             <div role="tabpanel" class="tab-pane" id="family">
                 <br>
-                <input type="radio" checked="{{ style.family }}" value="serif" />Serif
-                <input type="radio" checked="{{ style.family }}" value="sansserif" />Sans Serif
-                <input type="radio" checked="{{ style.family }}" value="monospace" />Monospace
-                <input type="radio" checked="{{ style.family }}" value="cursive" />Cursive
-                <input type="radio" checked="{{ style.family }}" value="fantasy" />Fantasy
+                <input type="radio" checked="{{ style.family }}" value="serif" /><span style="font-family: serif">Serif</span>
+                <input type="radio" checked="{{ style.family }}" value="sansserif" /><span style="font-family: sansserif">Sans Serif</span>
+                <input type="radio" checked="{{ style.family }}" value="monospace" /><span style="font-family: monospace">Monospace</span>
+                <input type="radio" checked="{{ style.family }}" value="cursive" /><span style="font-family: cursive">Cursive</span>
+                <input type="radio" checked="{{ style.family }}" value="fantasy" /><span style="font-family: fantasy">Fantasy</span>
             </div>
           </div>
         </div>
-        
+
 	{{ end }}
 {{ end }}
 <br>
-
