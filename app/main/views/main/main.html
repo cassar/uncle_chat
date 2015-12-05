@@ -4,15 +4,17 @@
 <:Body>
   <div class="container">
     <div class="header">
-      {{ if Volt.current_user }}
-      <ul class="nav nav-pills pull-right">
-        <:nav href="/">Home</:nav>
-        <:nav href="/about">About</:nav>
-        <:nav href="/dashboard">Dashboard</:nav>
-        <:user_templates:menu />
-      </ul>
-      {{ end }}
-      <h3 class="text-muted">Chat App</h3>
+      <nav class="navbar navbar-default">
+        {{ if Volt.current_user }}
+          <ul class="nav nav-pills pull-right">
+            <:nav href="/">Home</:nav>
+            <:nav href="/about">About</:nav>
+            <:nav href="/dashboard">Dashboard</:nav>
+            <:user_templates:menu />
+          </ul>
+        {{ end }}
+        <h4 class="text-muted">Chat App</h4>
+      </nav>
     </div>
 
     <:volt:notices />

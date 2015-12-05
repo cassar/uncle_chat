@@ -14,91 +14,88 @@
 						</div>
 						<div class="media-right">
 							{{ store.friends.where(name: comment.author).each do |friend| }}
-							<img class="media-object chat" src="{{ friend.image }}" alt="...">
+							  <img class="media-object chat" src="{{ friend.image }}" alt="...">
 							{{ end }}
 						</div>
 					</div>
-                    <span class="label label-info">{{ comment.sent_at }}</span>
+            <span class="label label-info">{{ comment.sent_at }}</span>
 				</div>
 			{{ else }}
 				<div class="panel-body" style="background-color:{{ comment.background }}">
 					<div class="media">
-                        <span class="label label-info pull-right">{{ comment.sent_at }}</span>
-						<div class="media-left">
-							{{ store.friends.where(name: comment.author).each do |friend| }}
-							<img class="media-object chat" src="{{ friend.image }}" alt="...">
-							{{ end }}
-						</div>
+            <span class="label label-info pull-right">{{ comment.sent_at }}</span>
+  						<div class="media-left">
+  							{{ store.friends.where(name: comment.author).each do |friend| }}
+  							  <img class="media-object chat" src="{{ friend.image }}" alt="...">
+  							{{ end }}
+  						</div>
 						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
 							{{ comment.entry }}
 						</div>
 					</div>
-
 				</div>
 			{{ end }}
 		{{ end }}
 	</div>
 </div>
-{{ store.friends.where(name: params._name).all.each do |friend| }}
-	{{ friend.styles.each do |style| }}
-        <div class="well" style="background-color:{{ style.background }}">
-        	<p style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">{{ friend.entry }}</p>
-        </div>
-    {{ end }}
-{{ end }}
-        <form e-submit="submit_comment">
-        {{ store.friends.where(name: params._name).each do |friend| }}
-          	<input class="form-control" placeholder="Chat Here" autofocus value="{{ friend.entry }}">
-        {{ end }}
-        </form>
+<div class="well">
+  {{ store.friends.where(name: params._name).all.each do |friend| }}
+  	{{ friend.styles.each do |style| }}
+      <div class="well" style="background-color:{{ style.background }}">
+      	<p style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">{{ friend.entry }}</p>
+      </div>
+      {{ end }}
+  {{ end }}
+  <form e-submit="submit_comment">
+  {{ store.friends.where(name: params._name).each do |friend| }}
+    	<input class="form-control" placeholder="Chat Here" autofocus value="{{ friend.entry }}">
+  {{ end }}
+  </form>
 
-        <br>
-
-        <div>
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#colour" aria-controls="colour" role="tab" data-toggle="tab">Colour</a></li>
-            <li role="presentation"><a href="#background" aria-controls="background" role="tab" data-toggle="tab">Background</a></li>
-            <li role="presentation"><a href="#size" aria-controls="size" role="tab" data-toggle="tab">Size</a></li>
-            <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab">Family</a></li>
-        	<button type="button" class="btn btn-primary pull-right" e-click="submit_comment">Submit</button>
-          </ul>
-{{ store.friends.where(name: params._name).all.each do |friend| }}
-    {{ friend.styles.each do |style| }}
-          <!-- Tab panes -->
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="colour">
-                <br>
-            	<input type="radio" checked="{{ style.colour }}" value="blue" /><span style="color: blue">Blue</span>
-                <input type="radio" checked="{{ style.colour }}" value="black" /><span style="color: black">Black</span>
-                <input type="radio" checked="{{ style.colour }}" value="red" /><span style="color: red">Red</span>
-                <input type="radio" checked="{{ style.colour }}" value="purple" /><span style="color: purple">Purple</span>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="background">
-                <br>
-            	<input type="radio" checked="{{ style.background }}" value="blue" /><span style="color: blue">Blue</span>
-                <input type="radio" checked="{{ style.background }}" value="black" /><span style="color: black">Black</span>
-                <input type="radio" checked="{{ style.background }}" value="red" /><span style="color: red">Red</span>
-                <input type="radio" checked="{{ style.background }}" value="purple" /><span style="color: purple">Purple</span>
-                <input type="radio" checked="{{ style.background }}" value="" /><span style="color: black">[none]</span>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="size">
-                <br>
-            	<input type="radio" checked="{{ style.size }}" value="large" /><span style="font-size: large">Large</span>
-                <input type="radio" checked="{{ style.size }}" value="medium" /><span style="font-size: medium">Medium</span>
-                <input type="radio" checked="{{ style.size }}" value="small" /><span style="font-size: small">Small</span>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="family">
-                <br>
-                <input type="radio" checked="{{ style.family }}" value="serif" /><span style="font-family: serif">Serif</span>
-                <input type="radio" checked="{{ style.family }}" value="sansserif" /><span style="font-family: sansserif">Sans Serif</span>
-                <input type="radio" checked="{{ style.family }}" value="monospace" /><span style="font-family: monospace">Monospace</span>
-                <input type="radio" checked="{{ style.family }}" value="cursive" /><span style="font-family: cursive">Cursive</span>
-                <input type="radio" checked="{{ style.family }}" value="fantasy" /><span style="font-family: fantasy">Fantasy</span>
-            </div>
+  <br>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#colour" aria-controls="colour" role="tab" data-toggle="tab">Colour</a></li>
+    <li role="presentation"><a href="#background" aria-controls="background" role="tab" data-toggle="tab">Background</a></li>
+    <li role="presentation"><a href="#size" aria-controls="size" role="tab" data-toggle="tab">Size</a></li>
+    <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab">Family</a></li>
+	  <button type="button" class="btn btn-primary pull-right" e-click="submit_comment">Submit</button>
+  </ul>
+  {{ store.friends.where(name: params._name).all.each do |friend| }}
+      {{ friend.styles.each do |style| }}
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="colour">
+            <br>
+          	<input type="radio" checked="{{ style.colour }}" value="blue" /><span style="color: blue">Blue</span>
+            <input type="radio" checked="{{ style.colour }}" value="black" /><span style="color: black">Black</span>
+            <input type="radio" checked="{{ style.colour }}" value="red" /><span style="color: red">Red</span>
+            <input type="radio" checked="{{ style.colour }}" value="purple" /><span style="color: purple">Purple</span>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="background">
+            <br>
+          	<input type="radio" checked="{{ style.background }}" value="blue" /><span style="color: blue">Blue</span>
+            <input type="radio" checked="{{ style.background }}" value="black" /><span style="color: black">Black</span>
+            <input type="radio" checked="{{ style.background }}" value="red" /><span style="color: red">Red</span>
+            <input type="radio" checked="{{ style.background }}" value="purple" /><span style="color: purple">Purple</span>
+            <input type="radio" checked="{{ style.background }}" value="" /><span style="color: black">[none]</span>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="size">
+            <br>
+          	<input type="radio" checked="{{ style.size }}" value="large" /><span style="font-size: large">Large</span>
+            <input type="radio" checked="{{ style.size }}" value="medium" /><span style="font-size: medium">Medium</span>
+            <input type="radio" checked="{{ style.size }}" value="small" /><span style="font-size: small">Small</span>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="family">
+            <br>
+            <input type="radio" checked="{{ style.family }}" value="serif" /><span style="font-family: serif">Serif</span>
+            <input type="radio" checked="{{ style.family }}" value="sansserif" /><span style="font-family: sansserif">Sans Serif</span>
+            <input type="radio" checked="{{ style.family }}" value="monospace" /><span style="font-family: monospace">Monospace</span>
+            <input type="radio" checked="{{ style.family }}" value="cursive" /><span style="font-family: cursive">Cursive</span>
+            <input type="radio" checked="{{ style.family }}" value="fantasy" /><span style="font-family: fantasy">Fantasy</span>
           </div>
         </div>
-
-	{{ end }}
-{{ end }}
+      </div>
+  	{{ end }}
+  {{ end }}
 <br>
