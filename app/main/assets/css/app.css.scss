@@ -1,5 +1,13 @@
 // Place your apps css here
 
+body {
+  background: url(https://scontent-lhr3-1.xx.fbcdn.net/hphotos-xtl1/v/t1.0-9/1544366_10152644407596405_4359910783923267705_n.jpg?oh=908bb7258c26a1418187f05a48299c87&oe=56E5206B) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .front {
 	width: 180px;
 	height: 200px;
@@ -23,7 +31,7 @@
     left:0;
     right:0;
 }
-#messagewindow{   
+#messagewindow{
     overflow:auto;
     top:0;
     bottom:3em;
