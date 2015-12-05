@@ -5,7 +5,7 @@
 
 <div id="chatwindow">
 	<div id="messagewindow">
-		{{ store.comments.all.each do |comment| }}
+		{{ store.comments.reverse.first(20).reverse.each do |comment| }}
 			{{ if comment.author == params._name }}
 				<div class="panel-body" style="background-color:{{ comment.background }}">
 					<div class="media pull-right">
