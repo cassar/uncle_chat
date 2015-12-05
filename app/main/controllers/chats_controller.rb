@@ -10,7 +10,7 @@ module Main
     end
 
     def friend_present?
-      friends.where(name: _name).first.then(&:present?)
+      friends.where(name: _name.capitalize).first.then(&:present?)
     end
   end
 end

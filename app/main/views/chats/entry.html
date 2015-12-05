@@ -1,4 +1,4 @@
-<:Title> 
+<:Title>
 
 Chat Entry | Chat App
 
@@ -10,7 +10,7 @@ Chat Entry | Chat App
 <br>
 <div class="jumbotron">
   {{ if friend_present? }}
-    {{ store.friends.where(name: _name).each do |friend| }}
+    {{ store.friends.where(name: _name.capitalize).each do |friend| }}
       <div class="media">
         <div class="media-left">
           <a href="/{{ friend.name }}">
