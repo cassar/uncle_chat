@@ -49,6 +49,7 @@ group :development do
   gem 'guard-rubocop'
   gem 'guard-bundler', require: false
   gem 'volt-browser_irb'
+  gem 'better_errors'
 end
 
 # Server for MRI
