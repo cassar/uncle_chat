@@ -1,17 +1,17 @@
 <:Title>
-  Chat App
+  Uncle Chat
 
 <:Body>
 {{ if Volt.current_user? }}
   <div class="jumbotron">
-    <h2>Hello, welcome to the Chat App!</h2>
+    <h2>Hello, welcome to the Uncle Chat!</h2>
     <p>Proceed to your dashboard or your chatroom below...</p>
     <p><a class="btn btn-primary" href="/dashboard" role="button">Dashboard</a>
     <a class="btn btn-primary" href="/little-girl-chat" role="button">Chat Room</a></p>
   </div>
 {{ else }}
   <div class="jumbotron">
-    <h2>Hello, welcome to the Chat App!</h2>
+    <h2>Hello, welcome to the Uncle Chat!</h2>
     <p>Please sign up or sign in below.</p>
     <p><a class="btn btn-primary" href="/signup" role="button">Sign Up</a>
     <a class="btn btn-primary" href="/login" role="button">Sign In</a></p>

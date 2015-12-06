@@ -13,7 +13,7 @@
             <:user_templates:menu />
           </ul>
         {{ end }}
-        <h4 class="text-muted">Chat App</h4>
+        <h4 class="text-muted logo">Uncle Chat</h4>
       </nav>
     </div>
 
@@ -22,7 +22,7 @@
     {{ view main_path, 'body', {controller_group: 'main'} }}
 
     <div class="footer">
-      <p>&copy; Chat App {{ Time.now.year }}</p>
+      <p>&copy; <span class="label label-primary">Uncle Chat {{ Time.now.year }}</span></p>
     </div>
 
   </div>
