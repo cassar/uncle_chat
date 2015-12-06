@@ -1,9 +1,9 @@
 # See https://github.com/voltrb/volt#routes for more info on routes
 
 client '/about', controller: 'main', action: 'about'
-client '/{{ name }}', controller: 'chats', action: 'index'
+client '/little-girl-chat/{{ name }}', controller: 'chats', action: 'index'
 client '/dashboard', controller: 'dashboards', action: 'index'
-client '/little_girl_chat', controller: 'chats', action: 'entry'
+client '/little-girl-chat', controller: 'chats', action: 'entry'
 
 # Routes for login and signup, provided by user_templates component gem
 client '/signup', component: 'user_templates', controller: 'signup'

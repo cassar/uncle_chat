@@ -13,7 +13,7 @@ Chat Entry | Chat App
     {{ store.friends.where(name: _name.capitalize).each do |friend| }}
       <div class="media">
         <div class="media-left">
-          <a href="/{{ friend.name }}">
+          <a href="/little-girl-chat/{{ friend.name }}">
             <img class="media-object img-circle front" src="{{ friend.image }}" alt="Your Face :)">
           </a>
         </div>
