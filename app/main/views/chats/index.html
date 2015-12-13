@@ -2,50 +2,8 @@
   Uncle Chat
 
 <:Body>
-
-<div id="chatwindow">
-	<div id="messagewindow">
-		{{ store.comments.reverse.first(20).reverse.each do |comment| }}
-			{{ if comment.author == params._name }}
-				<div class="panel-body" style="background-color:{{ comment.background }}">
-					<div class="media pull-right">
-						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
-							{{ comment.entry }}
-						</div>
-						<div class="media-right">
-							{{ store.friends.where(name: comment.author).each do |friend| }}
-							  <img class="media-object chat" src="{{ friend.image }}" alt="...">
-							{{ end }}
-						</div>
-					</div>
-            <span class="label label-info">{{ comment.sent_at }}</span>
-				</div>
-			{{ else }}
-				<div class="panel-body" style="background-color:{{ comment.background }}">
-					<div class="media">
-            <span class="label label-info pull-right">{{ comment.sent_at }}</span>
-  						<div class="media-left">
-  							{{ store.friends.where(name: comment.author).each do |friend| }}
-  							  <img class="media-object chat" src="{{ friend.image }}" alt="...">
-  							{{ end }}
-  						</div>
-						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
-							{{ comment.entry }}
-						</div>
-					</div>
-				</div>
-			{{ end }}
-		{{ end }}
-	</div>
-</div>
 <div class="well">
-  {{ store.friends.where(name: params._name).all.each do |friend| }}
-  	{{ friend.styles.each do |style| }}
-      <div class="well" style="background-color:{{ style.background }}">
-      	<p style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">{{ friend.entry }}</p>
-      </div>
-      {{ end }}
-  {{ end }}
+
   <form e-submit="submit_comment">
   {{ store.friends.where(name: params._name).each do |friend| }}
     	<input class="form-control" placeholder="Chat Here" autofocus value="{{ friend.entry }}">
@@ -100,3 +58,56 @@
   	{{ end }}
   {{ end }}
 <br>
+{{ store.friends.where(name: params._name).all.each do |friend| }}
+  {{ friend.styles.each do |style| }}
+    <div class="panel-body" style="background-color:{{ style.background }}">
+      <div class="media pull-right">
+        <div class="media-body" style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">
+          {{ friend.entry }}
+        </div>
+        <div class="media-right">
+          {{ store.friends.where(name: params._name).each do |friend| }}
+            <img class="media-object chat" src="{{ friend.image }}" alt="...">
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+{{ end }}
+<br>
+
+<div id="chatwindow">
+	<div id="messagewindow">
+		{{ store.comments.reverse.first(20).each do |comment| }}
+			{{ if comment.author == params._name }}
+				<div class="panel-body" style="background-color:{{ comment.background }}">
+					<div class="media pull-right">
+						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
+							{{ comment.entry }}
+						</div>
+						<div class="media-right">
+							{{ store.friends.where(name: comment.author).each do |friend| }}
+							  <img class="media-object chat" src="{{ friend.image }}" alt="...">
+							{{ end }}
+						</div>
+					</div>
+            <span class="label label-info">{{ comment.sent_at }}</span>
+				</div>
+			{{ else }}
+				<div class="panel-body" style="background-color:{{ comment.background }}">
+					<div class="media">
+            <span class="label label-info pull-right">{{ comment.sent_at }}</span>
+  						<div class="media-left">
+  							{{ store.friends.where(name: comment.author).each do |friend| }}
+  							  <img class="media-object chat" src="{{ friend.image }}" alt="...">
+  							{{ end }}
+  						</div>
+						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
+							{{ comment.entry }}
+						</div>
+					</div>
+				</div>
+			{{ end }}
+		{{ end }}
+	</div>
+</div>

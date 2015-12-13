@@ -22,7 +22,13 @@
     {{ view main_path, 'body', {controller_group: 'main'} }}
 
     <div class="footer">
-      <p>&copy; <span class="label label-primary">Uncle Chat {{ Time.now.year }}</span></p>
+      <p>
+        <a href="/signup">
+        <span class="label label-primary">
+          &copy; Uncle Chat {{ Time.now.year }}
+        </span>
+      </a>
+      </p>
     </div>
 
   </div>
