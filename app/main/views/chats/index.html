@@ -13,17 +13,18 @@
   <br>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#colour" aria-controls="colour" role="tab" data-toggle="tab">Colour</a></li>
-    <li role="presentation"><a href="#background" aria-controls="background" role="tab" data-toggle="tab">Background</a></li>
-    <li role="presentation"><a href="#size" aria-controls="size" role="tab" data-toggle="tab">Size</a></li>
-    <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab">Family</a></li>
+    <button type="button" class="btn btn-default" e-click="set_colour">Colour</button>
+    <button type="button" class="btn btn-default" e-click="set_background">Background</button>
+    <button type="button" class="btn btn-default" e-click="set_size">Size</button>
+    <button type="button" class="btn btn-default" e-click="set_family">Family</button>
 	  <button type="button" class="btn btn-primary pull-right" e-click="submit_comment">Submit</button>
   </ul>
   {{ store.friends.where(name: params._name).all.each do |friend| }}
       {{ friend.styles.each do |style| }}
         <!-- Tab panes -->
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="colour">
+          {{ if page._formatter == "colour" }}
+          <div role="tabpanel" class="tab-pane active">
             <br>
             <input type="radio" checked="{{ style.colour }}" value="black" /><span class="style" style="color: black">Black</span>
           	<input type="radio" checked="{{ style.colour }}" value="blue" /><span class="style" style="color: blue">Blue</span>
@@ -31,7 +32,8 @@
             <input type="radio" checked="{{ style.colour }}" value="red" /><span class="style" style="color: red">Red</span>
             <input type="radio" checked="{{ style.colour }}" value="orange" /><span class="style" style="color: orange">Orange</span>
           </div>
-          <div role="tabpanel" class="tab-pane" id="background">
+          {{ elsif page._formatter == "background"}}
+          <div role="tabpanel" class="tab-pane active">
             <br>
             <input type="radio" checked="{{ style.background }}" value="black" /><span class="style" style="background: black; color: white">Black</span>
           	<input type="radio" checked="{{ style.background }}" value="blue" /><span class="style" style="background: blue; color: white">Blue</span>
@@ -40,14 +42,16 @@
             <input type="radio" checked="{{ style.background }}" value="orange" /><span class="style" style="background: orange; color: white">Orange</span>
             <input type="radio" checked="{{ style.background }}" value="" /><span class="style">[none]</span>
           </div>
-          <div role="tabpanel" class="tab-pane" id="size">
+          {{ elsif page._formatter == "size"}}
+          <div role="tabpanel" class="tab-pane active">
             <br>
             <input type="radio" checked="{{ style.size }}" value="small" /><span class="style" style="font-size: small">Small</span>
             <input type="radio" checked="{{ style.size }}" value="medium" /><span class="style" style="font-size: medium">Medium</span>
             <input type="radio" checked="{{ style.size }}" value="large" /><span class="style" style="font-size: large">Large</span>
             <input type="radio" checked="{{ style.size }}" value="x-large" /><span class="style" style="font-size: x-large">Extra Large</span>
           </div>
-          <div role="tabpanel" class="tab-pane" id="family">
+          {{ elsif page._formatter == "family"}}
+          <div role="tabpanel" class="tab-pane active">
             <br>
             <input type="radio" checked="{{ style.family }}" value="serif" /><span class="style" style="font-family: serif">Serif</span>
             <input type="radio" checked="{{ style.family }}" value="sansserif" /><span class="style" style="font-family: sansserif">Sans Serif</span>
@@ -55,6 +59,7 @@
             <input type="radio" checked="{{ style.family }}" value="cursive" /><span class="style" style="font-family: cursive">Cursive</span>
             <input type="radio" checked="{{ style.family }}" value="fantasy" /><span class="style" style="font-family: fantasy">Fantasy</span>
           </div>
+          {{ end }}
         </div>
       </div>
   	{{ end }}

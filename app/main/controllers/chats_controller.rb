@@ -3,6 +3,23 @@ module Main
     model :store
 
     def index
+      page._formatter = "colour"
+    end
+
+    def set_background
+      page._formatter = "background"
+    end
+
+    def set_colour
+      page._formatter = "colour"
+    end
+
+    def set_size
+      page._formatter = "size"
+    end
+
+    def set_family
+      page._formatter = "family"
     end
 
     def submit_comment
