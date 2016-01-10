@@ -1,0 +1,13 @@
+<div class="panel-body" style="background-color:{{ background }}">
+  <div class="media pull-right">
+    <div class="media-body" style="font-family:{{ family }};color:{{ colour }};font-size:{{ size }}">
+      {{ entry }}
+    </div>
+    <div class="media-right">
+      {{ store.friends.where(name: author).each do |friend| }}
+        <img class="media-object chat" src="{{ friend.image }}" alt="...">
+      {{ end }}
+    </div>
+  </div>
+  <span class="label label-info">{{ sent_at }}</span>
+</div>

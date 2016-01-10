@@ -11,7 +11,7 @@
   </form>
 
   <br>
-  <!-- Nav tabs -->
+
   <ul class="nav nav-tabs" role="tablist">
     {{ if page._controls == false }}
     <button type="button" class="btn btn-primary" e-click="toggle_controls">
@@ -22,11 +22,9 @@
       <button type="button" class="btn btn-primary" e-click="toggle_controls">
         <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
       </button>
-      <button type="button" class="btn btn-default" e-click="set_colour">Colour</button>
-      <button type="button" class="btn btn-default" e-click="set_background">Background</button>
-      <button type="button" class="btn btn-default" e-click="set_size">Size</button>
-      <button type="button" class="btn btn-default" e-click="set_family">Family</button>
+      <:formatter_controls />
     {{ end }}
+
 	  <button type="button" class="btn btn-primary pull-right" e-click="submit_comment">Submit</button>
   </ul>
   {{ if page._controls == true }}
@@ -36,39 +34,14 @@
   {{ end }}
   <br>
 
-
-<div id="chatwindow">
-	<div id="messagewindow">
-		{{ store.comments.reverse.first(20).each do |comment| }}
-			{{ if comment.author == params._name }}
-				<div class="panel-body" style="background-color:{{ comment.background }}">
-					<div class="media pull-right">
-						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
-							{{ comment.entry }}
-						</div>
-						<div class="media-right">
-							{{ store.friends.where(name: comment.author).each do |friend| }}
-							  <img class="media-object chat" src="{{ friend.image }}" alt="...">
-							{{ end }}
-						</div>
-					</div>
-            <span class="label label-info">{{ comment.sent_at }}</span>
-				</div>
-			{{ else }}
-				<div class="panel-body" style="background-color:{{ comment.background }}">
-					<div class="media">
-            <span class="label label-info pull-right">{{ comment.sent_at }}</span>
-  						<div class="media-left">
-  							{{ store.friends.where(name: comment.author).each do |friend| }}
-  							  <img class="media-object chat" src="{{ friend.image }}" alt="...">
-  							{{ end }}
-  						</div>
-						<div class="media-body" style="font-family:{{ comment.family }};color:{{ comment.colour }};font-size:{{ comment.size }}">
-							{{ comment.entry }}
-						</div>
-					</div>
-				</div>
-			{{ end }}
-		{{ end }}
-	</div>
-</div>
+  <div id="chatwindow">
+  	<div id="messagewindow">
+  		{{ store.comments.reverse.first(20).each do |comment| }}
+  			{{ if comment.author == params._name }}
+          <:author_comment model="{{ comment }}" />
+  			{{ else }}
+          <:friend_comment model="{{ comment }}" />
+  			{{ end }}
+  		{{ end }}
+  	</div>
+  </div>
