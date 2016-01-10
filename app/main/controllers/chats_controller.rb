@@ -4,6 +4,7 @@ module Main
 
     def index
       page._formatter = 'colour'
+      page._controls = false
     end
 
     def set_background
@@ -20,6 +21,14 @@ module Main
 
     def set_family
       page._formatter = 'family'
+    end
+
+    def toggle_controls
+      if page._controls == true
+        page._controls = false
+      else
+        page._controls = true
+      end
     end
 
     def submit_comment

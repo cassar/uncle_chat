@@ -5,83 +5,37 @@
 <div class="well">
 
   <form e-submit="submit_comment">
-  {{ store.friends.where(name: params._name).each do |friend| }}
-    	<input class="form-control" placeholder="Chat Here" autofocus value="{{ friend.entry }}">
-  {{ end }}
+    {{ store.friends.where(name: params._name).each do |friend| }}
+      <input class="form-control" placeholder="Chat Here" autofocus value="{{ friend.entry }}">
+    {{ end }}
   </form>
 
   <br>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <button type="button" class="btn btn-default" e-click="set_colour">Colour</button>
-    <button type="button" class="btn btn-default" e-click="set_background">Background</button>
-    <button type="button" class="btn btn-default" e-click="set_size">Size</button>
-    <button type="button" class="btn btn-default" e-click="set_family">Family</button>
+    {{ if page._controls == false }}
+    <button type="button" class="btn btn-primary" e-click="toggle_controls">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button>
+    {{ end }}
+    {{ if page._controls == true }}
+      <button type="button" class="btn btn-primary" e-click="toggle_controls">
+        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="btn btn-default" e-click="set_colour">Colour</button>
+      <button type="button" class="btn btn-default" e-click="set_background">Background</button>
+      <button type="button" class="btn btn-default" e-click="set_size">Size</button>
+      <button type="button" class="btn btn-default" e-click="set_family">Family</button>
+    {{ end }}
 	  <button type="button" class="btn btn-primary pull-right" e-click="submit_comment">Submit</button>
   </ul>
-  {{ store.friends.where(name: params._name).all.each do |friend| }}
-      {{ friend.styles.each do |style| }}
-        <!-- Tab panes -->
-        <div class="tab-content">
-          {{ if page._formatter == "colour" }}
-          <div role="tabpanel" class="tab-pane active">
-            <br>
-            <input type="radio" checked="{{ style.colour }}" value="black" /><span class="style" style="color: black">Black</span>
-          	<input type="radio" checked="{{ style.colour }}" value="blue" /><span class="style" style="color: blue">Blue</span>
-            <input type="radio" checked="{{ style.colour }}" value="purple" /><span class="style" style="color: purple">Purple</span>
-            <input type="radio" checked="{{ style.colour }}" value="red" /><span class="style" style="color: red">Red</span>
-            <input type="radio" checked="{{ style.colour }}" value="orange" /><span class="style" style="color: orange">Orange</span>
-          </div>
-          {{ elsif page._formatter == "background"}}
-          <div role="tabpanel" class="tab-pane active">
-            <br>
-            <input type="radio" checked="{{ style.background }}" value="black" /><span class="style" style="background: black; color: white">Black</span>
-          	<input type="radio" checked="{{ style.background }}" value="blue" /><span class="style" style="background: blue; color: white">Blue</span>
-            <input type="radio" checked="{{ style.background }}" value="purple" /><span class="style" style="background: purple; color: white">Purple</span>
-            <input type="radio" checked="{{ style.background }}" value="red" /><span class="style" style="background: red; color: white">Red</span>
-            <input type="radio" checked="{{ style.background }}" value="orange" /><span class="style" style="background: orange; color: white">Orange</span>
-            <input type="radio" checked="{{ style.background }}" value="" /><span class="style">[none]</span>
-          </div>
-          {{ elsif page._formatter == "size"}}
-          <div role="tabpanel" class="tab-pane active">
-            <br>
-            <input type="radio" checked="{{ style.size }}" value="small" /><span class="style" style="font-size: small">Small</span>
-            <input type="radio" checked="{{ style.size }}" value="medium" /><span class="style" style="font-size: medium">Medium</span>
-            <input type="radio" checked="{{ style.size }}" value="large" /><span class="style" style="font-size: large">Large</span>
-            <input type="radio" checked="{{ style.size }}" value="x-large" /><span class="style" style="font-size: x-large">Extra Large</span>
-          </div>
-          {{ elsif page._formatter == "family"}}
-          <div role="tabpanel" class="tab-pane active">
-            <br>
-            <input type="radio" checked="{{ style.family }}" value="serif" /><span class="style" style="font-family: serif">Serif</span>
-            <input type="radio" checked="{{ style.family }}" value="sansserif" /><span class="style" style="font-family: sansserif">Sans Serif</span>
-            <input type="radio" checked="{{ style.family }}" value="monospace" /><span class="style" style="font-family: monospace">Monospace</span>
-            <input type="radio" checked="{{ style.family }}" value="cursive" /><span class="style" style="font-family: cursive">Cursive</span>
-            <input type="radio" checked="{{ style.family }}" value="fantasy" /><span class="style" style="font-family: fantasy">Fantasy</span>
-          </div>
-          {{ end }}
-        </div>
-      </div>
-  	{{ end }}
+  {{ if page._controls == true }}
+  <:formatter />
+  <br>
+  <:preview />
   {{ end }}
-<br>
-{{ store.friends.where(name: params._name).all.each do |friend| }}
-  {{ friend.styles.each do |style| }}
-    <div class="panel-body" style="background-color:{{ style.background }}">
-      <div class="media pull-right">
-        <div class="media-body" style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">
-          {{ friend.entry }}
-        </div>
-        <div class="media-right">
-          {{ store.friends.where(name: params._name).each do |friend| }}
-            <img class="media-object chat" src="{{ friend.image }}" alt="...">
-          {{ end }}
-        </div>
-      </div>
-    </div>
-    {{ end }}
-{{ end }}
-<br>
+  <br>
+
 
 <div id="chatwindow">
 	<div id="messagewindow">

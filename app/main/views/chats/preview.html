@@ -1,0 +1,16 @@
+{{ store.friends.where(name: params._name).all.each do |friend| }}
+  {{ friend.styles.each do |style| }}
+    <div class="panel-body" style="background-color:{{ style.background }}">
+      <div class="media pull-right">
+        <div class="media-body" style="font-family:{{ style.family }};color:{{ style.colour }};font-size:{{ style.size }}">
+          {{ friend.entry }}
+        </div>
+        <div class="media-right">
+          {{ store.friends.where(name: params._name).each do |friend| }}
+            <img class="media-object chat" src="{{ friend.image }}" alt="...">
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+{{ end }}
