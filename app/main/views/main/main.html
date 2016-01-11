@@ -3,19 +3,19 @@
 
 <:Body>
   <div class="container">
+    {{ if Volt.current_user }}
     <div class="header">
       <nav class="navbar navbar-default">
-        {{ if Volt.current_user }}
           <ul class="nav nav-pills pull-right">
             <:nav href="/">Home</:nav>
             <:nav href="/about">About</:nav>
             <:nav href="/dashboard">Dashboard</:nav>
             <:user_templates:menu />
           </ul>
-        {{ end }}
         <h4 class="text-muted logo">Uncle Chat</h4>
       </nav>
     </div>
+    {{ end }}
 
     <:volt:notices />
 
