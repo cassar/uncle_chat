@@ -32,16 +32,13 @@
   <br>
   <:preview />
   {{ end }}
-  <br>
-
-  <div id="chatwindow">
-  	<div id="messagewindow">
-  		{{ store.comments.reverse.first(20).each do |comment| }}
-  			{{ if comment.author == params._name }}
-          <:author_comment model="{{ comment }}" />
-  			{{ else }}
-          <:friend_comment model="{{ comment }}" />
-  			{{ end }}
-  		{{ end }}
-  	</div>
-  </div>
+</div>
+<div class="well">
+	{{ store.comments.reverse.first(20).each do |comment| }}
+		{{ if comment.author == params._name }}
+      <:author_comment model="{{ comment }}" />
+		{{ else }}
+      <:friend_comment model="{{ comment }}" />
+		{{ end }}
+	{{ end }}
+</div>
