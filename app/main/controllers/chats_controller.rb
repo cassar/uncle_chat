@@ -24,11 +24,7 @@ module Main
     end
 
     def toggle_controls
-      if page._controls == true
-        page._controls = false
-      else
-        page._controls = true
-      end
+      page._controls ^= true
     end
 
     def submit_comment
